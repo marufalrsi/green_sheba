@@ -1,17 +1,30 @@
+const remfecart=(x,z)=>{
+    console.log(x)
+    x.classList.add("hidden")
+    console.log(z)
+    let total=parseInt(document.getElementById("total").innerText)
+    console.log(total)
+    const afttot=total-z
+    console.log(afttot)
+    // let a=k-z
+  document.getElementById("total").innerText=afttot;
+}
+let price = 0
 const disableactive=()=>{
     const btns=document.querySelectorAll(".btns")
     btns.forEach(x=>x.classList.remove("active"))
     
 }
-const addtocart=(x,y)=>{
-    let clicked=0
-    document.getElementById("cartinfo").innerHTML+=`<div class="bg-[#b3f3cc60] py-3 px-5 flex justify-between my-2">
+const addtocart=(x,y,z)=>{
+    price+=y
+    document.getElementById("cartinfo").innerHTML+=`<div id="p_${z}" class="bg-[#b3f3cc60] py-3 px-5 flex justify-between my-2">
     <div>
         <h1>${x}</h1>
         <h2>৳${y} <i class="fa-solid fa-pen"></i>x <span>1</span></h2>
    </div>
-    <div><h1 class="text-2xl ">x</h1></div>
+    <div><h1 onclick="remfecart(p_${z},${y})" class="text-2xl ">x</h1></div>
    </div>`
+   document.getElementById("total").innerText=price;
 }
 const displayplantinfo=(y)=>{
     document.getElementById("trees").innerHTML=``
@@ -23,7 +36,7 @@ const displayplantinfo=(y)=>{
                 <img class="h-30 w-full" src=${z.image} alt="">
             </div>
             <div class="h-30">
-            <h6 class="font-semibold text-[14px] py-1"></h6>
+            <h6 class="font-semibold text-[14px] py-1">${z.name}</h6>
             <h5 class="font-normal text-[12px] text-justify">${z.description}</h5>
             </div>
             <div class="flex justify-between py-2">
@@ -32,7 +45,7 @@ const displayplantinfo=(y)=>{
         </div>
             <h1>৳${z.price}</h1></div>
             <div class="text-center bg-[#15803D] rounded-2xl">
-                <h1 onclick="addtocart('${z.name}',${z.price})" class="font-medium text-white text-[16px] py-1">Add to Cart</h1>
+                <h1 onclick="addtocart('${z.name}',${z.price},${z.id})" class="font-medium text-white text-[16px] py-1">Add to Cart</h1>
         </div>
     </div>`
     // console.log(treeinfo)
