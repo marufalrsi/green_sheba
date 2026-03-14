@@ -22,7 +22,7 @@ const addtocart=(x,y,z)=>{
    document.getElementById("total").innerText=price;
 }
 const displayplantinfo=(y)=>{
-    document.getElementById("trees").innerHTML=``
+    
 //    console.log(y)
    let treeinfo=``
    y.forEach(z=>{
@@ -45,10 +45,13 @@ const displayplantinfo=(y)=>{
     </div>`
     // console.log(treeinfo)
 })
+document.getElementById("cyt").classList.add("hidden")
 document.getElementById("trees").innerHTML+=treeinfo
 }
 function displaytree(z)
 {
+    document.getElementById("trees").innerHTML=``
+    document.getElementById("cyt").classList.remove("hidden")
 console.log(z)
 let url=`https://openapi.programming-hero.com/api/category/${z}`
 console.log(url)
@@ -68,6 +71,7 @@ const displaycat=(x)=>
         </div>`
     });
     document.getElementById("Categories").innerHTML+=category
+    document.getElementById("spanner").classList.add("hidden")
 }
 function categories(){
 fetch("https://openapi.programming-hero.com/api/categories")
