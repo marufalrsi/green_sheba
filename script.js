@@ -1,15 +1,10 @@
-const remfecart=(x,z)=>{
-    console.log(x)
-    x.classList.add("hidden")
-    console.log(z)
-    let total=parseInt(document.getElementById("total").innerText)
-    console.log(total)
-    const afttot=total-z
-    console.log(afttot)
-    // let a=k-z
-  document.getElementById("total").innerText=afttot;
-}
 let price = 0
+const remfecart=(x,z)=>{
+    x.classList.add("hidden")
+    price-=z
+    console.log(price)
+    document.getElementById("total").innerText=price;
+}
 const disableactive=()=>{
     const btns=document.querySelectorAll(".btns")
     btns.forEach(x=>x.classList.remove("active"))
